@@ -1,7 +1,6 @@
 from flask import Flask, request
 import logging
 import json
-import os
 # импортируем функции из нашего второго файла geo
 from geo import get_country, get_distance, get_coordinates
 
@@ -10,9 +9,6 @@ app = Flask(__name__)
 # Добавляем логирование в файл.
 # Чтобы найти файл, перейдите на pythonwhere в раздел files,
 # он лежит в корневой папке
-logging.basicConfig(level=logging.INFO, filename='app.log',
-                    format='%(asctime)s %(levelname)s %(name)s %(message)s')
-
 
 @app.route('/post', methods=['POST'])
 def main():
@@ -61,6 +57,4 @@ def get_cities(req):
 
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        port = int(os.environ.get("PORT", 5000))
-        app.run(host='0.0.0.0', port=port)
+    app.run(host='127.0.0.1', port=5001)
